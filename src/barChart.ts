@@ -496,6 +496,24 @@ module powerbi.extensibility.visual {
                         selector: null
                     });
                     break;
+                case 'xAxisReferenceLine':
+                objectEnumeration.push({
+                    objectName: objectName,
+                    properties: {
+                        opacity: this.barChartSettings.generalView.opacity,
+                        showHelpLink: this.barChartSettings.generalView.showHelpLink
+                    },
+                    validValues: {
+                        opacity: {
+                            numberRange: {
+                                min: 10,
+                                max: 100
+                            }
+                        }
+                    },
+                    selector: null
+                });
+                break;
             };
 
             return objectEnumeration;
