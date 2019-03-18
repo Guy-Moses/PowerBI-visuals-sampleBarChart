@@ -371,5 +371,6 @@
         "roles": [
             "Tooltips"
         ]
-    }
+    },
+    "supportsLandingPage": false
 }
