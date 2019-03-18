@@ -40,61 +40,106 @@
         }
     }],
     "objects": {
-        "xAxisReferenceLine": {
-            "displayName": "X-Axis Constant Line",
-            "description": "Display a reference line",
+        "testAnalyticsProperty":{
+            "displayName": "Test Analytics Property",
+            "objectCategory": 2,
             "properties": {
                 "show": {
-                    "displayName": "Enable X Axis Constant Line",
+                    "displayName": "Show",
                     "type": {
                         "bool": true
                     }
                 },
                 "displayName": {
-                    "displayName": "Name",
-                    "description": "Set reference line name",
-                    "type": { "text": true }
+                    "type": {
+                        "text": true
+                    }
                 },
-                "value": {
-                    "displayName": "Value",
-                    "description": "Set reference line numeric value",
-                    "type": { "numeric": true }
+                "opacity": {
+                    "displayName": "Bars Opacity",
+                    "type": {
+                        "integer": true
+                    }
                 },
-                "lineColor": {
-                    "displayName": "Color",
-                    "description": "Set reference line color",
-                    "type": { 
-                        "fill": { 
-                            "solid": { 
-                                "color": true } 
-                                } 
-                            }
-                        },
-                "transparency": {
-                    "displayName": "Transparency",
-                    "description": "Set transparency for reference line color",
-                    "type": { "numeric": true }
+                "showHelpLink": {
+                    "displayName": "Show Help Button",
+                    "type": {
+                        "bool": true
+                    }
                 },
-                "style": {
-                    "displayName": "Line style",
-                    "type": { "enumeration":[
-                        {"value": "dashed", "displayName":"dashed"},
-                        {"value": "solid", "displayName":"solid"}
+                "specialEnumeration":{
+                    "displayName": "Special Enumeration",
+                    "type": {"enumeration": [
+                        {"value": "coffee", "displayName":"Coffee ☕"},
+                        {"value": "warning", "displayName":"Warning ⚠"},
+                        {"value": "musicalNote", "displayName":"Musical Note 𝅘𝅥𝅮"}
+                        ]
+                    }
+                }
+            }
+        },
+        "CardWithManyPropertiesAnalytics": {
+            "displayName": "Test All Properties (Analytics)",
+            "objectCategory": 2,
+            "properties": {
+                "show": {
+                    "displayName": "Show",
+                    "type": {
+                        "bool": true
+                    }
+                },
+                "displayName": {
+                    "type": {
+                        "text": true
+                    }
+                },
+                "unboundIntegerProperty": {
+                    "displayName": "Integer (unbound) Property",
+                    "type": {
+                        "integer": true
+                    }
+                },
+                "boundIntegerProperty": {
+                    "displayName": "Integer (bound) Property",
+                    "type": {
+                        "integer": true
+                    }
+                },
+                "unboundNumericProperty": {
+                    "displayName": "Numeric (unbound) Property",
+                    "type": {
+                        "numeric": true
+                    }
+                },
+                "boundNumericProperty": {
+                    "displayName": "Numeric (bound) Property",
+                    "type": {
+                        "numeric": true
+                    }
+                },
+                "booleanProperty": {
+                    "displayName": "Boolean Property",
+                    "type": {
+                        "bool": true
+                    }
+                },
+                "textProperty": {
+                    "displayName": "Text Property",
+                    "type": {
+                        "text": true
+                    }
+                },
+                "specialEnumeration":{
+                    "displayName": "Enumeration Property",
+                    "type": {"enumeration": [
+                        {"value": "coffee", "displayName":"Coffee ☕"},
+                        {"value": "warning", "displayName":"Warning ⚠"},
+                        {"value": "musicalNote", "displayName":"Musical Note 𝅘𝅥𝅮"}
                         ]
                     }
                 },
-                "position": {
-                    "displayName":"In Front",
-                    "type": {"text": true}
-                },
-                "dataLabelShow": {
-                    "displayName": "Data label",
-                    "description": "Set the reference line data label color",
-                    "type": { "bool": true }
-                },
-                "dataLabelColor": {
-                    "displayName": "Color",
-                    "description": "Set the reference line data label color",
+                "colorProperty": {
+                    "displayName": "Color Property",
                     "type": {
                         "fill": {
                             "solid": {
@@ -103,36 +148,148 @@
                         }
                     }
                 },
-                "dataLabelText": {
-                    "displayName": "Visual_Reference_Line_Data_Label_Text",
-                    "description":"Visual_Reference_Line_Data_Label_Text_Description",
-                    "type": { "text": true}
-                },
-                "dataLabelDecimalPoints": {
-                    "displayName": "Visual_Reference_Line_Data_Decimal_Points",
-                    "placeHolderText": "Visual_Auto",
-                    "type": { "numeric": true }
-                },
-                "dataLabelHorizontalPosition": {
-                    "displayName": "Visual_Reference_Line_Data_Horizontal_Position",
-                    "type": {"enumeration": [
-                        {"value": "left", "displayName":"left"},
-                        {"value": "right", "displayName":"right"}
-                        ]
-                    }
-                },
-                "dataLabelVerticalPosition": {
-                    "displayName": "Visual_Reference_Line_Data_Vertical_Position",
-                    "type": {"enumeration": [
-                        {"value": "above", "displayName":"above"},
-                        {"value": "under", "displayName":"under"}
-                        ]
-                    }
-                },
-                "dataLabelDisplayUnits": {
-                    "displayName": "Visual_DisplayUnits",
+                "nullableColorProperty": {
+                    "displayName": "Color (or 'none') Property",
                     "type": {
-                        "formatting": { "labelDisplayUnits": true }
+                        "fill": {
+                            "solid": {
+                                "color": {
+                                    "nullable": true
+                                }
+                            }
+                        }
+                    }
+                },
+                "formattingLableDisplayUnitsProperty": {
+                    "displayName": "Formatting: Label Display Units Property",
+                    "type": {
+                        "formatting": {
+                            "labelDisplayUnits": true
+                        }
+                    }
+                },
+                "formattingAlignmentProperty": {
+                    "displayName": "Formatting: Alignment Property",
+                    "type": {
+                        "formatting": {
+                            "alignment": true
+                        }
+                    }
+                },
+                "formattingFontSizeProperty": {
+                    "displayName": "Formatting: Font Size Property",
+                    "type": {
+                        "formatting": {
+                            "fontSize": true
+                        }
+                    }
+                }
+            }
+        },
+        "CardWithManyPropertiesFormatting": {
+            "displayName": "Test All Properties (Formatting)",
+            "objectCategory": 1,
+            "properties": {
+                "show": {
+                    "displayName": "Show",
+                    "type": {
+                        "bool": true
+                    }
+                },
+                "displayName": {
+                    "type": {
+                        "text": true
+                    }
+                },
+                "unboundIntegerProperty": {
+                    "displayName": "Integer (unbound) Property",
+                    "type": {
+                        "integer": true
+                    }
+                },
+                "boundIntegerProperty": {
+                    "displayName": "Integer (bound) Property",
+                    "type": {
+                        "integer": true
+                    }
+                },
+                "unboundNumericProperty": {
+                    "displayName": "Numeric (unbound) Property",
+                    "type": {
+                        "numeric": true
+                    }
+                },
+                "boundNumericProperty": {
+                    "displayName": "Numeric (bound) Property",
+                    "type": {
+                        "numeric": true
+                    }
+                },
+                "booleanProperty": {
+                    "displayName": "Boolean Property",
+                    "type": {
+                        "bool": true
+                    }
+                },
+                "textProperty": {
+                    "displayName": "Text Property",
+                    "type": {
+                        "text": true
+                    }
+                },
+                "specialEnumeration":{
+                    "displayName": "Enumeration Property",
+                    "type": {"enumeration": [
+                        {"value": "coffee", "displayName":"Coffee ☕"},
+                        {"value": "warning", "displayName":"Warning ⚠"},
+                        {"value": "musicalNote", "displayName":"Musical Note 𝅘𝅥𝅮"}
+                        ]
+                    }
+                },
+                "colorProperty": {
+                    "displayName": "Color Property",
+                    "type": {
+                        "fill": {
+                            "solid": {
+                                "color": true
+                            }
+                        }
+                    }
+                },
+                "nullableColorProperty": {
+                    "displayName": "Color (or 'none') Property",
+                    "type": {
+                        "fill": {
+                            "solid": {
+                                "color": {
+                                    "nullable": true
+                                }
+                            }
+                        }
+                    }
+                },
+                "formattingLableDisplayUnitsProperty": {
+                    "displayName": "Formatting: Label Display Units Property",
+                    "type": {
+                        "formatting": {
+                            "labelDisplayUnits": true
+                        }
+                    }
+                },
+                "formattingAlignmentProperty": {
+                    "displayName": "Formatting: Alignment Property",
+                    "type": {
+                        "formatting": {
+                            "alignment": true
+                        }
+                    }
+                },
+                "formattingFontSizeProperty": {
+                    "displayName": "Formatting: Font Size Property",
+                    "type": {
+                        "formatting": {
+                            "fontSize": true
+                        }
                     }
                 }
             }
@@ -182,10 +339,25 @@
                         "integer": true
                     }
                 },
+                "showBugBashData": {
+                    "displayName": "Show Bug-Bash data",
+                    "type": {
+                        "bool": true
+                    }
+                },
                 "showHelpLink": {
                     "displayName": "Show Help Button",
                     "type": {
                         "bool": true
+                    }
+                },
+                "specialEnumeration":{
+                    "displayName": "Special Enumeration",
+                    "type": {"enumeration": [
+                        {"value": "coffee", "displayName":"Coffee ☕"},
+                        {"value": "warning", "displayName":"Warning ⚠"},
+                        {"value": "musicalNote", "displayName":"Musical Note 𝅘𝅥𝅮"}
+                        ]
                     }
                 }
             }

@@ -34,6 +34,14 @@ module powerbi.extensibility.visual {
         selectionId: ISelectionId;
     };
 
+
+    enum twoValsEnum {
+        above,under
+    };
+
+    enum specialValsEnum {
+        coffee, warning, musicalNote
+    }
     /**
      * Interface for BarChart settings.
      *
@@ -50,8 +58,53 @@ module powerbi.extensibility.visual {
 
         generalView: {
             opacity: number;
+            showBugBashData: boolean;
             showHelpLink: boolean;
             helpLinkColor: string;
+            specialEnumeration: specialValsEnum;
+        };
+
+        testAnalyticsProperty: {
+            show: boolean;
+            displayName: string;
+            opacity: number;
+            showHelpLink: boolean;
+            helpLinkColor: string;
+            specialEnumeration: specialValsEnum;
+        };
+
+        CardWithManyPropertiesAnalytics: {
+            show: boolean;
+            displayName: string;
+            unboundIntegerProperty: number;
+            boundIntegerProperty: number;
+            unboundNumericProperty: number;
+            boundNumericProperty: number;
+            booleanProperty: boolean;
+            textProperty: string;
+            specialEnumeration: specialValsEnum
+            colorProperty: string;
+            nullableColorProperty: string;
+            formattingLableDisplayUnitsProperty: number;
+            formattingAlignmentProperty: string;
+            formattingFontSizeProperty: number;
+        };
+
+        CardWithManyPropertiesFormatting: {
+            show: boolean;
+            displayName: string;
+            unboundIntegerProperty: number;
+            boundIntegerProperty: number;
+            unboundNumericProperty: number;
+            boundNumericProperty: number;
+            booleanProperty: boolean;
+            textProperty: string;
+            specialEnumeration: specialValsEnum
+            colorProperty: string;
+            nullableColorProperty: string;
+            formattingLableDisplayUnitsProperty: number;
+            formattingAlignmentProperty: string;
+            formattingFontSizeProperty: number;
         };
     }
 
@@ -73,9 +126,51 @@ module powerbi.extensibility.visual {
             },
             generalView: {
                 opacity: 100,
+                showBugBashData: false,
                 showHelpLink: false,
                 helpLinkColor: "#80B0E0",
-            }
+                specialEnumeration: specialValsEnum.coffee
+            },
+            testAnalyticsProperty: {
+                show: false,
+                displayName: "Analytics Instance",
+                opacity: 100,
+                showHelpLink: false,
+                helpLinkColor: "#80B0E0",
+                specialEnumeration: specialValsEnum.coffee
+            },
+            CardWithManyPropertiesAnalytics: {
+                show: false,
+                displayName: "Analytics Instance",
+                unboundIntegerProperty: 10,
+                boundIntegerProperty: 20,
+                unboundNumericProperty: 10.5,
+                boundNumericProperty: 20.5,
+                booleanProperty: false,
+                textProperty: "What is your name?",
+                specialEnumeration: specialValsEnum.coffee,
+                colorProperty: "#8800FF",
+                nullableColorProperty: "#00FF88",
+                formattingLableDisplayUnitsProperty: 0,
+                formattingAlignmentProperty: 'right',
+                formattingFontSizeProperty: 10
+            },
+            CardWithManyPropertiesFormatting: {
+                show: false,
+                displayName: "Formatting Instance",
+                unboundIntegerProperty: 10,
+                boundIntegerProperty: 20,
+                unboundNumericProperty: 10.5,
+                boundNumericProperty: 20.5,
+                booleanProperty: false,
+                textProperty: "What is your quest?",
+                specialEnumeration: specialValsEnum.coffee,
+                colorProperty: "#8800FF",
+                nullableColorProperty: "#00FF88",
+                formattingLableDisplayUnitsProperty: 0,
+                formattingAlignmentProperty: 'right',
+                formattingFontSizeProperty: 10
+            },
         };
         let viewModel: BarChartViewModel = {
             dataPoints: [],
@@ -112,8 +207,50 @@ module powerbi.extensibility.visual {
             },
             generalView: {
                 opacity: getValue<number>(objects, 'generalView', 'opacity', defaultSettings.generalView.opacity),
+                showBugBashData: getValue<boolean>(objects, 'generalView', 'showBugBashData', defaultSettings.generalView.showBugBashData),
                 showHelpLink: getValue<boolean>(objects, 'generalView', 'showHelpLink', defaultSettings.generalView.showHelpLink),
                 helpLinkColor: strokeColor,
+                specialEnumeration: getValue<specialValsEnum>(objects, 'generalView', 'specialEnumeration', defaultSettings.generalView.specialEnumeration)
+            },
+            testAnalyticsProperty: {
+                show: getValue<boolean>(objects, 'testAnalyticsProperty', 'show', defaultSettings.testAnalyticsProperty.show),
+                displayName: getValue<string>(objects, 'testAnalyticsProperty', 'displayName', defaultSettings.testAnalyticsProperty.displayName),
+                opacity: getValue<number>(objects, 'testAnalyticsProperty', 'opacity', defaultSettings.testAnalyticsProperty.opacity),
+                showHelpLink: getValue<boolean>(objects, 'testAnalyticsProperty', 'showHelpLink', defaultSettings.testAnalyticsProperty.showHelpLink),
+                helpLinkColor: strokeColor,
+                specialEnumeration: getValue<specialValsEnum>(objects, 'testAnalyticsProperty', 'specialEnumeration', defaultSettings.testAnalyticsProperty.specialEnumeration)
+            },
+            CardWithManyPropertiesAnalytics: {
+                show: getValue<boolean>(objects, 'CardWithManyPropertiesAnalytics', 'show', defaultSettings.CardWithManyPropertiesAnalytics.show),
+                displayName: getValue<string>(objects, 'CardWithManyPropertiesAnalytics', 'displayName', defaultSettings.CardWithManyPropertiesAnalytics.displayName),
+                unboundIntegerProperty: getValue<number>(objects, 'CardWithManyPropertiesAnalytics', 'unboundIntegerProperty', defaultSettings.CardWithManyPropertiesAnalytics.unboundIntegerProperty),
+                boundIntegerProperty: getValue<number>(objects, 'CardWithManyPropertiesAnalytics', 'boundIntegerProperty', defaultSettings.CardWithManyPropertiesAnalytics.boundIntegerProperty),
+                unboundNumericProperty: getValue<number>(objects, 'CardWithManyPropertiesAnalytics', 'unboundNumericProperty', defaultSettings.CardWithManyPropertiesAnalytics.unboundNumericProperty),
+                boundNumericProperty: getValue<number>(objects, 'CardWithManyPropertiesAnalytics', 'boundNumericProperty', defaultSettings.CardWithManyPropertiesAnalytics.boundNumericProperty),
+                booleanProperty: getValue<boolean>(objects, 'CardWithManyPropertiesAnalytics', 'booleanProperty', defaultSettings.CardWithManyPropertiesAnalytics.booleanProperty),
+                textProperty: getValue<string>(objects, 'CardWithManyPropertiesAnalytics', 'textProperty', defaultSettings.CardWithManyPropertiesAnalytics.textProperty),
+                specialEnumeration: getValue<specialValsEnum>(objects, 'CardWithManyPropertiesAnalytics', 'specialEnumeration', defaultSettings.testAnalyticsProperty.specialEnumeration),
+                colorProperty: getValue<string>(objects, 'CardWithManyPropertiesAnalytics', 'colorProperty', defaultSettings.CardWithManyPropertiesAnalytics.colorProperty),
+                nullableColorProperty: getValue<string>(objects, 'CardWithManyPropertiesAnalytics', 'nullableColorProperty', defaultSettings.CardWithManyPropertiesAnalytics.nullableColorProperty),
+                formattingLableDisplayUnitsProperty: getValue<number>(objects, 'CardWithManyPropertiesAnalytics', 'formattingLableDisplayUnitsProperty', defaultSettings.CardWithManyPropertiesAnalytics.formattingLableDisplayUnitsProperty),
+                formattingAlignmentProperty: getValue<string>(objects, 'CardWithManyPropertiesAnalytics', 'formattingAlignmentProperty', defaultSettings.CardWithManyPropertiesAnalytics.formattingAlignmentProperty),
+                formattingFontSizeProperty: getValue<number>(objects, 'CardWithManyPropertiesAnalytics', 'formattingFontSizeProperty', defaultSettings.CardWithManyPropertiesAnalytics.formattingFontSizeProperty)
+            },
+            CardWithManyPropertiesFormatting: {
+                show: getValue<boolean>(objects, 'CardWithManyPropertiesFormatting', 'show', defaultSettings.CardWithManyPropertiesFormatting.show),
+                displayName: getValue<string>(objects, 'CardWithManyPropertiesFormatting', 'displayName', defaultSettings.CardWithManyPropertiesFormatting.displayName),
+                unboundIntegerProperty: getValue<number>(objects, 'CardWithManyPropertiesFormatting', 'unboundIntegerProperty', defaultSettings.CardWithManyPropertiesFormatting.unboundIntegerProperty),
+                boundIntegerProperty: getValue<number>(objects, 'CardWithManyPropertiesFormatting', 'boundIntegerProperty', defaultSettings.CardWithManyPropertiesFormatting.boundIntegerProperty),
+                unboundNumericProperty: getValue<number>(objects, 'CardWithManyPropertiesFormatting', 'unboundNumericProperty', defaultSettings.CardWithManyPropertiesFormatting.unboundNumericProperty),
+                boundNumericProperty: getValue<number>(objects, 'CardWithManyPropertiesFormatting', 'boundNumericProperty', defaultSettings.CardWithManyPropertiesFormatting.boundNumericProperty),
+                booleanProperty: getValue<boolean>(objects, 'CardWithManyPropertiesFormatting', 'booleanProperty', defaultSettings.CardWithManyPropertiesFormatting.booleanProperty),
+                textProperty: getValue<string>(objects, 'CardWithManyPropertiesFormatting', 'textProperty', defaultSettings.CardWithManyPropertiesFormatting.textProperty),
+                specialEnumeration: getValue<specialValsEnum>(objects, 'CardWithManyPropertiesFormatting', 'specialEnumeration', defaultSettings.testAnalyticsProperty.specialEnumeration),
+                colorProperty: getValue<string>(objects, 'CardWithManyPropertiesFormatting', 'colorProperty', defaultSettings.CardWithManyPropertiesFormatting.colorProperty),
+                nullableColorProperty: getValue<string>(objects, 'CardWithManyPropertiesFormatting', 'nullableColorProperty', defaultSettings.CardWithManyPropertiesFormatting.nullableColorProperty),
+                formattingLableDisplayUnitsProperty: getValue<number>(objects, 'CardWithManyPropertiesFormatting', 'formattingLableDisplayUnitsProperty', defaultSettings.CardWithManyPropertiesFormatting.formattingLableDisplayUnitsProperty),
+                formattingAlignmentProperty: getValue<string>(objects, 'CardWithManyPropertiesFormatting', 'formattingAlignmentProperty', defaultSettings.CardWithManyPropertiesFormatting.formattingAlignmentProperty),
+                formattingFontSizeProperty: getValue<number>(objects, 'CardWithManyPropertiesFormatting', 'formattingFontSizeProperty', defaultSettings.CardWithManyPropertiesFormatting.formattingFontSizeProperty)
             },
         };
 
@@ -213,6 +350,7 @@ module powerbi.extensibility.visual {
         private tooltipServiceWrapper: ITooltipServiceWrapper;
         private locale: string;
         private helpLinkElement: d3.Selection<any>;
+        private bugBashElement: d3.Selection<any>;
 
         private barSelection: d3.selection.Update<BarChartDataPoint>;
 
@@ -246,7 +384,7 @@ module powerbi.extensibility.visual {
             });
 
             this.tooltipServiceWrapper = createTooltipServiceWrapper(this.host.tooltipService, options.element);
-
+            debugger;
             this.svg = d3.select(options.element)
                 .append('svg')
                 .classed('barChart', true);
@@ -265,6 +403,12 @@ module powerbi.extensibility.visual {
             options.element.appendChild(helpLinkElement);
 
             this.helpLinkElement = d3.select(helpLinkElement);
+
+            const bugBashElement: Element = this.createBugBashElementHook();
+            bugBashElement.setAttribute("id","bugBashHook")
+            options.element.appendChild(bugBashElement);
+
+            this.bugBashElement = d3.select(bugBashElement);
         }
 
         /**
@@ -292,6 +436,9 @@ module powerbi.extensibility.visual {
                 let margins = BarChart.Config.margins;
                 height -= margins.bottom;
             }
+
+            this.bugBashElement
+                .classed("hidden", !settings.generalView.showBugBashData)
 
             this.helpLinkElement
                 .classed("hidden", !settings.generalView.showHelpLink)
@@ -396,6 +543,9 @@ module powerbi.extensibility.visual {
                 });
                 mouseEvent.preventDefault();
             });
+
+            //BugBash info
+            this.updateBugBashElement();
         }
 
         private syncSelectionState(
@@ -483,7 +633,9 @@ module powerbi.extensibility.visual {
                         objectName: objectName,
                         properties: {
                             opacity: this.barChartSettings.generalView.opacity,
-                            showHelpLink: this.barChartSettings.generalView.showHelpLink
+                            showBugBashData: this.barChartSettings.generalView.showBugBashData,
+                            showHelpLink: this.barChartSettings.generalView.showHelpLink,
+                            specialEnumeration: this.barChartSettings.generalView.specialEnumeration
                         },
                         validValues: {
                             opacity: {
@@ -496,24 +648,111 @@ module powerbi.extensibility.visual {
                         selector: null
                     });
                     break;
-                case 'xAxisReferenceLine':
+                case 'testAnalyticsProperty':
+                    objectEnumeration.push({
+                        objectName: objectName,
+                        properties: {
+                            show: this.barChartSettings.testAnalyticsProperty.show,
+                            displayName: this.barChartSettings.testAnalyticsProperty.displayName,
+                            opacity: this.barChartSettings.testAnalyticsProperty.opacity,
+                            showHelpLink: this.barChartSettings.testAnalyticsProperty.showHelpLink,
+                            specialEnumeration: this.barChartSettings.testAnalyticsProperty.specialEnumeration
+                        },
+                        validValues: {
+                            opacity: {
+                                numberRange: {
+                                    min: 10,
+                                    max: 100
+                                }
+                            }
+                        },
+                        selector: null
+                    });
+                    break;
+                case 'CardWithManyPropertiesAnalytics':
                 objectEnumeration.push({
                     objectName: objectName,
                     properties: {
-                        opacity: this.barChartSettings.generalView.opacity,
-                        showHelpLink: this.barChartSettings.generalView.showHelpLink
+                        show: this.barChartSettings.CardWithManyPropertiesAnalytics.show,
+                        displayName: this.barChartSettings.CardWithManyPropertiesAnalytics.displayName,
+                        unboundIntegerProperty: this.barChartSettings.CardWithManyPropertiesAnalytics.unboundIntegerProperty,
+                        boundIntegerProperty: this.barChartSettings.CardWithManyPropertiesAnalytics.boundIntegerProperty,
+                        unboundNumericProperty: this.barChartSettings.CardWithManyPropertiesAnalytics.unboundNumericProperty,
+                        boundNumericProperty: this.barChartSettings.CardWithManyPropertiesAnalytics.boundNumericProperty,
+                        booleanProperty: this.barChartSettings.CardWithManyPropertiesAnalytics.booleanProperty,
+                        textProperty: this.barChartSettings.CardWithManyPropertiesAnalytics.textProperty,
+                        specialEnumeration: this.barChartSettings.CardWithManyPropertiesAnalytics.specialEnumeration,
+                        colorProperty: this.barChartSettings.CardWithManyPropertiesAnalytics.colorProperty,
+                        nullableColorProperty: this.barChartSettings.CardWithManyPropertiesAnalytics.nullableColorProperty,
+                        formattingLableDisplayUnitsProperty: this.barChartSettings.CardWithManyPropertiesAnalytics.formattingLableDisplayUnitsProperty,
+                        formattingAlignmentProperty: this.barChartSettings.CardWithManyPropertiesAnalytics.formattingAlignmentProperty,
+                        formattingFontSizeProperty: this.barChartSettings.CardWithManyPropertiesAnalytics.formattingFontSizeProperty
                     },
                     validValues: {
-                        opacity: {
+                        boundIntegerProperty: {
                             numberRange: {
                                 min: 10,
                                 max: 100
+                            }
+                        },
+                        boundNumericProperty: {
+                            numberRange: {
+                                min: 0,
+                                max: 100
+                            }
+                        },
+                        formattingFontSizeProperty :{
+                            numberRange: {
+                                min: 8,
+                                max: 40
                             }
                         }
                     },
                     selector: null
                 });
                 break;
+                case 'CardWithManyPropertiesFormatting':
+                    objectEnumeration.push({
+                        objectName: objectName,
+                        properties: {
+                            show: this.barChartSettings.CardWithManyPropertiesFormatting.show,
+                            displayName: this.barChartSettings.CardWithManyPropertiesFormatting.displayName,
+                            unboundIntegerProperty: this.barChartSettings.CardWithManyPropertiesFormatting.unboundIntegerProperty,
+                            boundIntegerProperty: this.barChartSettings.CardWithManyPropertiesFormatting.boundIntegerProperty,
+                            unboundNumericProperty: this.barChartSettings.CardWithManyPropertiesFormatting.unboundNumericProperty,
+                            boundNumericProperty: this.barChartSettings.CardWithManyPropertiesFormatting.boundNumericProperty,
+                            booleanProperty: this.barChartSettings.CardWithManyPropertiesFormatting.booleanProperty,
+                            textProperty: this.barChartSettings.CardWithManyPropertiesFormatting.textProperty,
+                            specialEnumeration: this.barChartSettings.CardWithManyPropertiesFormatting.specialEnumeration,
+                            colorProperty: this.barChartSettings.CardWithManyPropertiesFormatting.colorProperty,
+                            nullableColorProperty: this.barChartSettings.CardWithManyPropertiesFormatting.nullableColorProperty,
+                            formattingLableDisplayUnitsProperty: this.barChartSettings.CardWithManyPropertiesFormatting.formattingLableDisplayUnitsProperty,
+                            formattingAlignmentProperty: this.barChartSettings.CardWithManyPropertiesFormatting.formattingAlignmentProperty,
+                            formattingFontSizeProperty: this.barChartSettings.CardWithManyPropertiesFormatting.formattingFontSizeProperty
+                        },
+                        validValues: {
+                            boundIntegerProperty: {
+                                numberRange: {
+                                    min: 10,
+                                    max: 100
+                                }
+                            },
+                            boundNumericProperty: {
+                                numberRange: {
+                                    min: 0,
+                                    max: 100
+                                }
+                            },
+                            formattingFontSizeProperty :{
+                                numberRange: {
+                                    min: 8,
+                                    max: 40
+                                }
+                            }
+                        },
+                        selector: null
+                    });
+                    break;
             };
 
             return objectEnumeration;
@@ -548,6 +787,58 @@ module powerbi.extensibility.visual {
                 this.host.launchUrl("https://github.com/Microsoft/PowerBI-visuals/blob/master/Readme.md#developing-your-first-powerbi-visual");
             });
             return linkElement;
+        };
+
+        private createBugBashElementHook(): Element {
+            let bugBashHookElement = document.createElement("div");
+            bugBashHookElement.setAttribute("class","bugBashHook");
+            bugBashHookElement.innerText = "bugBash data not populated yet. If this is unexpected, check for errors/bugs.";
+
+            return bugBashHookElement;
+        }
+
+        private updateBugBashElement(): void {
+            let bugBashHook = document.getElementById("bugBashHook");
+            bugBashHook.innerText = "Bug Bash Data:";
+            d3.select("table.bugBashTable").remove();
+
+            let tableElement = document.createElement("table");
+            tableElement.setAttribute("class","bugBashTable");
+            //header row
+            let headerRow = document.createElement("tr");
+            let propertyNameHeader = document.createElement("th");
+            propertyNameHeader.innerText = "Property";
+            headerRow.appendChild(propertyNameHeader);
+            
+            let formatHeader = document.createElement("th");
+            formatHeader.innerText = "Format";
+            headerRow.appendChild(formatHeader);
+
+            let analyticsNameHeader = document.createElement("th");
+            analyticsNameHeader.innerText = "Analytics";
+            headerRow.appendChild(analyticsNameHeader);
+
+            tableElement.appendChild(headerRow);
+
+            //data rows
+            for(var property in this.barChartSettings.CardWithManyPropertiesAnalytics) {
+                let currRow = document.createElement("tr");
+                let propertyNameCell = document.createElement("td");
+                propertyNameCell.innerText = property;
+                currRow.appendChild(propertyNameCell);
+
+                let formatCell = document.createElement("td");
+                formatCell.innerText = JSON.stringify(this.barChartSettings.CardWithManyPropertiesFormatting[property]);
+                currRow.appendChild(formatCell);
+
+                let analyticsNameCell = document.createElement("td");
+                analyticsNameCell.innerText = JSON.stringify(this.barChartSettings.CardWithManyPropertiesAnalytics[property]);
+                currRow.appendChild(analyticsNameCell);
+
+                tableElement.appendChild(currRow);
+            }
+            
+            bugBashHook.appendChild(tableElement);
         };
     }
 }

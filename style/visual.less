@@ -30,3 +30,44 @@ p {
         display: none;
     }
 }
+
+div#bugBashHook {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    background: rgba(255,255,255,0.8);
+    overflow: auto;
+
+    &.hidden {
+        display: none;
+    }
+    table.bugBashTable {
+        border-collapse: collapse;
+        width:100%;
+
+        &, th, td {
+            border: 1px solid #888888;
+        }
+
+        td {
+            padding: 2px;
+            font-size: 12px;
+        }
+
+        th {
+            padding: 2px;
+            font-size: 14px;
+            text-align: left;
+        }
+
+        tr:nth-child(odd) {
+            background: rgba(200,200,255,0.5);
+        }
+
+        tr:nth-child(even) {
+            background: rgba(240,240,240,0.5);
+        }
+    }
+}
